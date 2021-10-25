@@ -1,0 +1,8 @@
+/* ---- reset ---- */
+#main-container {
+  margin: 0 auto;
+  font: normal 75% Arial, Helvetica, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  background-color: cornflowerblue;
+}

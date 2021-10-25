@@ -1,0 +1,39 @@
+<div class="message-input sender-input">
+  <input
+    type="text"
+    placeholder="Cambia el nombre del sender.."
+    [(ngModel)]="currentSender"
+    (keydown)="changeSender()"
+  />
+</div>
+<div class="chat centered">
+  <div class="messages">
+    <ul class="message-list" #list id="list">
+      <ng-container *ngFor="let msg of chat; let i = index; trackBy: trackByID">
+        <li
+          *ngIf="msg.sender === currentSender; else otherMessages"
+          class="message-item item-secondary"
+        >
+          <app-chat-messages [message]="msg"></app-chat-messages>
+        </li>
+
+        <ng-template #otherMessages>
+          <li class="message-item item-primary">
+            <app-chat-messages [message]="msg"></app-chat-messages>
+          </li>
+        </ng-template>
+      </ng-container>
+    </ul>
+    <div class="message-input">
+      <input
+        type="text"
+        placeholder="Escribe tu mensaje.."
+        [(ngModel)]="message"
+      />
+
+      <button type="button" class="btn" (click)="sendMessage()">
+        <i class="fa fa-send fa_custom fa-2x"></i>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'porth-front';
+export class AppComponent implements OnInit, OnDestroy {
+  ngOnInit() {
+    localStorage.setItem('user', 'John Doe');
+  }
+  ngOnDestroy() {
+    localStorage.removeItem('user');
+  }
 }
